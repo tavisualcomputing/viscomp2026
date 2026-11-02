@@ -30,8 +30,10 @@ We highly recommend using Visual Studio Code for solving the exercises, though y
 
 To see the output of your code while solving the exercises, please follow one of the steps below:
 
-- **VS Code:** Install the `vscode-preview-server` extension. Right-click the `.html` file and select either **Launch on browser** or **Preview on side panel**.
-- **Python 3:** In the directory containing the `.html` file, run `python -m http.server`. Then open [http://localhost:8000](http://localhost:8000) in your browser. You can choose another port by adding it to the command.
+- **VS Code:** Right-click the `.html` file and select **Open in Integrated Browser**. No extension needed.
+- **Python 3:** In the directory containing the `.html` file, run `python3 -m http.server` (`python -m http.server` on Windows). Then open [http://localhost:8000](http://localhost:8000) in your browser. 8000 is the default port. To use another one, add its number to the end of the command, for example `python3 -m http.server 8003`, and open [http://localhost:8003](http://localhost:8003) instead.
+
+Opening the `.html` file directly from disk (a `file://` address) does not work. The browser blocks the exercise's JavaScript modules and the page stays empty or shows an error.
 
 Some browsers or versions may not be supported. Please check the WebGL initialization code in the respective exercise or ask us during the exercise sessions.
 
