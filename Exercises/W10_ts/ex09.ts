@@ -100,12 +100,12 @@ const canvas = document.getElementById( 'canvas' ) as HTMLCanvasElement;
 
 canvas.width = document.body.clientWidth;
 canvas.height = document.body.clientHeight;
-const gl = canvas.getContext( 'webgl' );
+const gl = canvas.getContext( 'webgl' )!;
 const textCanvas = document.getElementById( 'text' ) as HTMLCanvasElement;
 
 textCanvas.width = document.body.clientWidth;
 textCanvas.height = document.body.clientHeight;
-const ctx = textCanvas.getContext( '2d' );
+const ctx = textCanvas.getContext( '2d' )!;
 // Shader programs
 const floorShaderProgram = initShaderProgram( gl, vsFloorSource, fsFloorSource );
 const objectShaderProgram = initShaderProgram( gl, vsSource, fsSource );
@@ -115,7 +115,7 @@ const shaderPrograms = [
 ];
 
 // Helper for setting the projection, view, and model matrices (and optionally the light position)
-function setPVM ( P: mat4, V: mat4, M: mat4, lightPos = null ) {
+function setPVM ( P: mat4, V: mat4, M: mat4, lightPos: null | number[] = null ) {
     const VM = mat4.create(); // uModelViewMatrix
 
     mat4.multiply( VM, V, M );
@@ -451,7 +451,7 @@ function main () {
     // gl.getExtension('OES_element_index_uint');
 
     // load in the mesh (this reads all vertex and face information from the .obj file)
-    const objStr = document.getElementById( 'decorations.obj' ).innerHTML;
+    const objStr = document.getElementById( 'decorations.obj' )!.innerHTML;
     const mesh = new OBJ.Mesh( objStr );
 
     OBJ.initMeshBuffers( gl, mesh );
@@ -696,7 +696,7 @@ function initShaderProgram ( gl: WebGLRenderingContext, vsSource: string, fsSour
             ) }`
         );
 
-        return null;
+        throw new Error( `Unable to initialize shader program with error : ${ gl.getProgramInfoLog( shaderProgram ) }` );
     }
 
     return shaderProgram;
@@ -707,7 +707,7 @@ function initShaderProgram ( gl: WebGLRenderingContext, vsSource: string, fsSour
 // compiles it.
 //
 function loadShader ( gl: WebGLRenderingContext, type: number, source: string ) {
-    const shader = gl.createShader( type );
+    const shader = gl.createShader( type )!;
 
     // Send the source to the shader object
     gl.shaderSource( shader, source );
@@ -722,8 +722,14 @@ function loadShader ( gl: WebGLRenderingContext, type: number, source: string ) 
         );
         gl.deleteShader( shader );
 
-        return null;
+        throw new Error( `shaders could not be compiled with error ${ gl.getShaderInfoLog( shader ) }` );
     }
 
     return shader;
 }
+
+window.addEventListener( 'mousedown', mouseDown );
+window.addEventListener( 'mousemove', mouseMoved );
+window.addEventListener( 'mouseup', mouseUp );
+window.addEventListener( 'keydown', keyDown );
+window.addEventListener( 'keyup', keyUp );

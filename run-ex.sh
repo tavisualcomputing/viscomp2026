@@ -2,7 +2,9 @@
 
 read -p "Enter exercise number: " ex_num
 
-cd "./Exercises/W$ex_num"
+cd "./Exercises/W${ex_num}_ts/dist"
+
+pwd
 
 xdg-open "http://localhost:8080" &
 

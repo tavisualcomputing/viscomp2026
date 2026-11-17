@@ -12,12 +12,7 @@
     <meta charset="utf-8"> 
   </head>
 
-  <body onmousedown="mouseDown(event)" 
-        onmouseup="mouseUp(event)" 
-        onmousemove="mouseMoved(event)" 
-        onkeydown="keyDown(event)" 
-        onkeyup="keyUp(event)" 
-        tabindex="0" >
+  <body tabindex="0" >
     <div class="container" style="">
       <canvas id="canvas"></canvas>
       <canvas id="text" style="position: absolute; left: 10px; top: 0px; z-index: 10;"></canvas>
@@ -45479,7 +45474,7 @@
   </script>
 
   <script type='text/javascript' src='webgl-obj-loader.js'></script>
-  <script src="gl-matrix.js"></script>
-  <script src="ex09.js"></script>
+  <script src="./gl-matrix.js"></script>
+  <script defer type="module" src="ex09.js"></script>
 
 </html>
