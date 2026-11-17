@@ -1,0 +1,14 @@
+{
+    "name": "w8",
+    "version": "1.0.0",
+    "description": "",
+    "type": "module",
+    "main": "main.js",
+    "scripts": {
+        "build": "./build.sh"
+    },
+    "devDependencies": {
+        "@types/gl-matrix": "^2.4.5",
+        "typescript": "^7.0.2"
+    }
+}
