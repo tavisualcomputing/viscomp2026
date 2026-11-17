@@ -1,14 +1,13 @@
 {
-    "name": "w8",
+    "name": "W10",
     "version": "1.0.0",
-    "description": "",
+    "description": "Exercise for Week 10",
     "type": "module",
     "main": "main.js",
     "scripts": {
         "build": "./build.sh"
     },
     "devDependencies": {
-        "@types/gl-matrix": "^2.4.5",
         "typescript": "^7.0.2"
     }
 }
